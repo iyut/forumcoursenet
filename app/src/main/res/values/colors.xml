@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorFFFFFF">#ffffff</color>
+    <color name="colorafafaf">#afafaf</color>
+    <color name="colorEFEFEF">#efefef</color>
+    <color name="colorfafafa">#fafafa</color>
+    <color name="colorPrimary">#fd4e9a</color>
+    <color name="colorPrimaryDark">#fd4e9a</color>
+    <color name="colorAccent">#fd4e9a</color>
+    <color name="colorGradientStart">#fa87b9</color>
+    <color name="colorGradientEnd">#fd4e9a</color>
+</resources>
