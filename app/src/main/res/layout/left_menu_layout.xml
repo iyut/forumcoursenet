@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="20dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgleftmenuheader"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/profile_menu" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/profile_name_link"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:text="Andrea Kraszinski"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_settings"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorafafaf" />
+    </LinearLayout>
+
+</LinearLayout>

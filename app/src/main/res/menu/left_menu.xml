@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/group_left_menu_page"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/left_menu_home"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_home_afafaf_24dp"
+            android:title="@string/home" />
+
+    </group>
+
+    <group
+        android:id="@+id/group_left_menu_logging"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/left_menu_change_password"
+            app:showAsAction="always|withText"
+            android:icon="@drawable/ic_email_afafaf_24dp"
+            android:title="@string/change_password"></item>
+
+        <item
+            android:id="@+id/left_menu_logout"
+            android:icon="@drawable/ic_keyboard_tab_afafaf_24dp"
+            android:title="@string/logout"></item>
+
+        <item
+            android:id="@+id/left_menu_exit"
+            android:icon="@drawable/ic_power_settings_new_afafaf_24dp"
+            android:title="@string/exit"></item>
+    </group>
+</menu>

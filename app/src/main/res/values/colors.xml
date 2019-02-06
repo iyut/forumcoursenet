@@ -4,9 +4,9 @@
     <color name="colorafafaf">#afafaf</color>
     <color name="colorEFEFEF">#efefef</color>
     <color name="colorfafafa">#fafafa</color>
-    <color name="colorPrimary">#fd4e9a</color>
-    <color name="colorPrimaryDark">#fd4e9a</color>
-    <color name="colorAccent">#fd4e9a</color>
-    <color name="colorGradientStart">#fa87b9</color>
-    <color name="colorGradientEnd">#fd4e9a</color>
+    <color name="colorPrimary">#1d69ab</color>
+    <color name="colorPrimaryDark">#0b5290</color>
+    <color name="colorAccent">#1d69ab</color>
+    <color name="colorGradientStart">#1d69ab</color>
+    <color name="colorGradientEnd">#0b5290</color>
 </resources>
