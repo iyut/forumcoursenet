@@ -1,0 +1,12 @@
+package com.interfeis.forumluthfi.settings;
+
+public class General {
+
+    public static final String URL_SERVER = "http://192.168.1.5/samples/android/";
+
+    public static final String get_url_server(){
+
+        return URL_SERVER;
+
+    }
+}
