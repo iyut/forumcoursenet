@@ -76,9 +76,9 @@ public class RegisterActivity extends AppCompatActivity {
 
             RequestBody reqBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
-                    .addFormDataPart("name", strFullname)
-                    .addFormDataPart("email", strUsername)
-                    .addFormDataPart("password", strPassword)
+                    .addFormDataPart("txtfullname", strFullname)
+                    .addFormDataPart("txtemail", strUsername)
+                    .addFormDataPart("txtpassword", strPassword)
                     .build();
 
             Request reqPost = new Request.Builder()
@@ -91,6 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
             pd.setMessage(getString(R.string.please_wait));
             pd.setCancelable(false);
             pd.setIcon(R.drawable.ic_email_afafaf_24dp);
+
+            pd.show();
 
             okHC.newCall(reqPost).enqueue(new Callback() {
                 @Override

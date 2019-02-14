@@ -72,13 +72,13 @@ public class LoginActivity extends AppCompatActivity {
 
             RequestBody okReqBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
-                    .addFormDataPart("username", strUsername)
-                    .addFormDataPart("password", strPassword)
+                    .addFormDataPart("txtusername", strUsername)
+                    .addFormDataPart("txtpassword", strPassword)
                     .build();
 
             Request okReq = new Request.Builder()
                     .post(okReqBody)
-                    .url(General.get_url_server())
+                    .url(General.get_url_server() + "proses_login.php")
                     .build();
 
             final ProgressDialog pd = new ProgressDialog(LoginActivity.this);
