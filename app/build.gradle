@@ -29,10 +29,12 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0' // for scanner
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0' // for connecting server
-    implementation 'com.squareup.picasso:picasso:2.71828' // for image loading
+    implementation 'com.squareup.picasso:picasso:2.3.2' // for image loading
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

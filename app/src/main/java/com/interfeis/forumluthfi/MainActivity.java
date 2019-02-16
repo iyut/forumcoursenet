@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.interfeis.forumluthfi.MainActivityFragment.MainFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     ActionBarDrawerToggle left_menu_toggle;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        openAppFragment( new HomeFragment() );
+        openAppFragment( new MainFragment() );
 
         data_app = getSharedPreferences("DATA_APP", MODE_PRIVATE);
 
