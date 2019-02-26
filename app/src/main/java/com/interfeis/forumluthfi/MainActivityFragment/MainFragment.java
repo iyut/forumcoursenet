@@ -3,10 +3,12 @@ package com.interfeis.forumluthfi.MainActivityFragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.interfeis.forumluthfi.MainActivity;
 import com.interfeis.forumluthfi.R;
 import com.interfeis.forumluthfi.settings.General;
 import com.interfeis.forumluthfi.dbstructure.Thread;
@@ -39,6 +42,8 @@ import okhttp3.Response;
 public class MainFragment extends Fragment {
 
 
+    public FloatingActionButton btnAddThread;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -51,24 +56,43 @@ public class MainFragment extends Fragment {
         View fview = inflater.inflate(R.layout.fragment_main, container, false);
         // Inflate the layout for this fragment
 
-        showSlider( fview );
+        btnAddThread = (FloatingActionButton) fview.findViewById(R.id.btn_add_thread);
 
-        showThreadList( fview );
+        showSlider(fview);
+
+        showThreadList(fview);
+
+        btnAddThread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnAddThreadOnClicked(view);
+            }
+        });
 
         return fview;
     }
 
+    public void btnAddThreadOnClicked(View view) {
 
-    public void showSlider( View fview ) {
+        MainActivity ma = (MainActivity) view.getContext();
 
-        SliderLayout slMain = (SliderLayout) fview.findViewById( R.id.slmain );
+        AddThreadFragment atf = new AddThreadFragment();
 
-        TextSliderView tsvSlider = new TextSliderView( getContext() );
+        ma.openAppFragment(atf);
+
+    }
+
+
+    public void showSlider(View fview) {
+
+        SliderLayout slMain = (SliderLayout) fview.findViewById(R.id.slmain);
+
+        TextSliderView tsvSlider = new TextSliderView(getContext());
 
         String name = "testing";
-        tsvSlider.description( name )
-                .image( R.drawable.logo_forumnet )
-                .setScaleType( BaseSliderView.ScaleType.FitCenterCrop )
+        tsvSlider.description(name)
+                .image(R.drawable.logo_forumnet)
+                .setScaleType(BaseSliderView.ScaleType.FitCenterCrop)
                 .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                     @Override
                     public void onSliderClick(BaseSliderView slider) {
@@ -76,47 +100,48 @@ public class MainFragment extends Fragment {
                     }
                 });
 
-        tsvSlider.bundle( new Bundle() );
+        tsvSlider.bundle(new Bundle());
         tsvSlider.getBundle()
                 .putString("extra", name);
 
-        slMain.addSlider( tsvSlider );
+        slMain.addSlider(tsvSlider);
         // slMain.addSlider( tsvSlider );
 
-        slMain.setPresetTransformer( SliderLayout.Transformer.Accordion );
-        slMain.setPresetIndicator( SliderLayout.PresetIndicators.Center_Bottom );
-        slMain.setCustomAnimation( new DescriptionAnimation() );
-        slMain.setDuration( 4000 );
+        slMain.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        slMain.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        slMain.setCustomAnimation(new DescriptionAnimation());
+        slMain.setDuration(4000);
 
         slMain.stopAutoCycle();
 
     }
 
-    public void showThreadList(final View fview ){
+    public void showThreadList(final View fview) {
 
 
-        final RecyclerView rvList = (RecyclerView) fview.findViewById( R.id.rvlist );
+        final RecyclerView rvList = (RecyclerView) fview.findViewById(R.id.rvlist);
 
-        LinearLayoutManager llm = new LinearLayoutManager( getActivity() );
-        llm.setOrientation( LinearLayoutManager.VERTICAL );
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        rvList.setLayoutManager( llm );
+        rvList.setLayoutManager(llm);
 
         OkHttpClient okHC = new OkHttpClient();
 
         Request okReq = new Request.Builder()
                 .get()
-                .url(General.get_url_server() + "get_thread.php" )
+                .url(General.get_url_server() + "get_thread.php")
                 .build();
 
-        final ProgressDialog pd = new ProgressDialog( getActivity() );
+        final ProgressDialog pd = new ProgressDialog(getActivity());
 
-        pd.setTitle(getString(R.string.get_thread_data) );
-        pd.setMessage( getString( R.string.loading ) );
+        pd.setTitle(getString(R.string.get_thread_data));
+        pd.setMessage(getString(R.string.loading));
+        pd.setCancelable(false);
 
         pd.show();
 
-        okHC.newCall( okReq ).enqueue(new Callback() {
+        okHC.newCall(okReq).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -124,7 +149,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void run() {
                         pd.dismiss();
-                        Snackbar.make( fview, getString( R.string.cannot_connect_server ), Snackbar.LENGTH_LONG );
+                        Snackbar.make(fview, getString(R.string.cannot_connect_server), Snackbar.LENGTH_LONG);
                     }
                 });
             }
@@ -139,45 +164,43 @@ public class MainFragment extends Fragment {
                     public void run() {
 
                         try {
-                            JSONObject objResponse = new JSONObject( respString );
 
-                            boolean resultBool = objResponse.getBoolean( "result" );
+                            JSONObject objResponse = new JSONObject(respString);
 
-                            if( resultBool == true ) {
+                            boolean resultBool = objResponse.getBoolean("result");
+                            String m = objResponse.getString("message");
 
-                                JSONArray datasArr = objResponse.getJSONArray( "data" );
+                            ThreadAdapter adapter = new ThreadAdapter();
+                            adapter.datas = new ArrayList<>();
 
-                                ThreadAdapter adapter = new ThreadAdapter();
+                            if (resultBool == true) {
+                                Log.e("resultBool", resultBool + "");
+                                JSONArray datasArr = objResponse.getJSONArray("data");
 
-                                adapter.datas = new ArrayList<>();
-
-                                for( int i = 0; i < datasArr.length(); i++ ){
+                                for (int i = 0; i < datasArr.length(); i++) {
 
                                     Thread thread = new Thread();
 
-                                    JSONObject dataObj = datasArr.getJSONObject( i );
+                                    JSONObject dataObj = datasArr.getJSONObject(i);
 
-                                    thread.author = dataObj.getInt( "author" );
-                                    thread.content = dataObj.getString( "content" );
-                                    thread.title = dataObj.getString( "title");
-                                    thread.id = dataObj.getInt( "id" );
+                                    thread.author = dataObj.getInt("author");
+                                    thread.content = dataObj.getString("content");
+                                    thread.title = dataObj.getString("title");
+                                    thread.id = dataObj.getInt("id");
 
-                                    adapter.datas.add( thread );
+                                    adapter.datas.add(thread);
                                 }
-
-                                rvList.setAdapter( adapter );
-
-                                pd.dismiss();
-                            } else {
-
-                                String f = objResponse.getString("field");
-                                String m = objResponse.getString("message");
-
-                                pd.dismiss();
-
-                                Snackbar.make( fview, m, Snackbar.LENGTH_LONG).show();
                             }
+
+                            rvList.setAdapter(adapter);
+
+                            pd.dismiss();
+
+                            Snackbar.make(fview, m, Snackbar.LENGTH_LONG).show();
+
                         } catch (JSONException e) {
+
+                            Log.e("Thread get data", e.getMessage());
                             e.printStackTrace();
                         }
                     }

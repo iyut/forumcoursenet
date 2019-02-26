@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivityFragment.MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/slmain"
-            android:layout_width="match_parent"
-            android:layout_height="170dp">
-
-        </com.daimajia.slider.library.SliderLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvlist"
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>\
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slmain"
+                android:layout_width="match_parent"
+                android:layout_height="170dp">
 
-    </LinearLayout>
+            </com.daimajia.slider.library.SliderLayout>
 
-</ScrollView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_add_thread"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_ffffff_24dp" />
+    
+</FrameLayout>

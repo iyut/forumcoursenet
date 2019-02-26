@@ -16,7 +16,7 @@ public class ThreadCardViewHolder extends RecyclerView.ViewHolder {
     public ThreadCardViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        threadName = itemView.findViewById( R.id.tvThreadName );
+        threadName = (TextView) itemView.findViewById( R.id.tvThreadName );
 
     }
 
