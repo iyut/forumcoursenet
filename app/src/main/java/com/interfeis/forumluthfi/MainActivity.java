@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(menuItem.getItemId() == R.id.left_menu_home){
 
-                    openAppFragment(new HomeFragment());
+                    openAppFragment(new MainFragment());
 
                     Toast.makeText(getApplicationContext(), getString(R.string.home), Toast.LENGTH_SHORT).show();
                     main_act_layout.closeDrawers();

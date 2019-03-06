@@ -2,10 +2,13 @@ package com.interfeis.forumluthfi.MainActivityFragment;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +40,8 @@ public class AddThreadFragment extends Fragment {
     TextInputEditText txtTitle;
     EditText txtContent;
     Button btnSubmit;
+    SharedPreferences data_app;
+
     public AddThreadFragment() {
         // Required empty public constructor
     }
@@ -56,7 +61,7 @@ public class AddThreadFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                btnSubmitOnClicked( view );
             }
         });
         return infView;
@@ -66,6 +71,10 @@ public class AddThreadFragment extends Fragment {
 
         String strTitle     = txtTitle.getText().toString();
         String strContent   = txtContent.getText().toString();
+
+        data_app            = getActivity().getSharedPreferences("DATA_APP", Context.MODE_PRIVATE );
+
+        String strEmail     = (String) data_app.getString("data_email", getString(R.string.user));
 
         if( strTitle.length() == 0 ){
 
@@ -84,6 +93,7 @@ public class AddThreadFragment extends Fragment {
             RequestBody okReqBody   = new MultipartBody.Builder()
                     .addFormDataPart("txttitle", strTitle )
                     .addFormDataPart("txtcontent", strContent )
+                    .addFormDataPart("txtauthor", strEmail )
                     .setType( MultipartBody.FORM )
                     .build();
 
@@ -152,6 +162,7 @@ public class AddThreadFragment extends Fragment {
 
 
                             } catch (JSONException e) {
+                                Log.e("Add Thread Fragment button clicked", e.getMessage() );
                                 e.printStackTrace();
                             }
                         }

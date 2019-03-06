@@ -31,4 +31,5 @@
     <string name="title">Title</string>
     <string name="title_required">Title is required</string>
     <string name="content_required">Content is required</string>
+    <string name="user">User</string>
 </resources>
