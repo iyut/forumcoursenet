@@ -31,6 +31,7 @@ public class ThreadAdapter extends RecyclerView.Adapter<ThreadCardViewHolder> {
 
         Thread threadData = datas.get( i );
         threadCardViewHolder.threadName.setText( threadData.title );
+        threadCardViewHolder.threadID.setText( threadData.id );
     }
 
     @Override

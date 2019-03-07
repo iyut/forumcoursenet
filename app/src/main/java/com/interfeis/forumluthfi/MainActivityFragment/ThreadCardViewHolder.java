@@ -6,17 +6,28 @@ import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.interfeis.forumluthfi.MainActivity;
 import com.interfeis.forumluthfi.R;
 
 public class ThreadCardViewHolder extends RecyclerView.ViewHolder {
 
     TextView threadName;
+    TextView threadID;
     RatingBar ratingThread;
 
-    public ThreadCardViewHolder(@NonNull View itemView) {
+    public ThreadCardViewHolder(@NonNull final View itemView) {
         super(itemView);
 
         threadName = (TextView) itemView.findViewById( R.id.tvThreadName );
+        threadID    = (TextView) itemView.findViewById( R.id.tvThreadID );
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MainActivity ma = (MainActivity) itemView.getContext();
+            }
+        });
 
     }
 
