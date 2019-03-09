@@ -13,18 +13,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/tvThreadTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title" />
+                android:text="@string/title"
+                android:textSize="25dp"
+                android:layout_marginBottom="10dp"
+                android:textFontWeight="bold" />
 
             <TextView
                 android:id="@+id/tvThreadContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
                 android:text="@string/content_required" />
 
             <android.support.design.widget.TextInputLayout
