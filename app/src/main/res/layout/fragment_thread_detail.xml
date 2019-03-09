@@ -5,10 +5,55 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityFragment.ThreadDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvThreadTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title" />
+
+            <TextView
+                android:id="@+id/tvThreadContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/content_required" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtcomment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_your_comment"
+                    android:text="" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btncomment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/comment" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvthreadlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>

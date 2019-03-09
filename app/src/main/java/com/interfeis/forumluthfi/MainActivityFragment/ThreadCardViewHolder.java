@@ -1,5 +1,6 @@
 package com.interfeis.forumluthfi.MainActivityFragment;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -25,7 +26,16 @@ public class ThreadCardViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
 
-                MainActivity ma = (MainActivity) itemView.getContext();
+                MainActivity ma             = (MainActivity) itemView.getContext();
+                String strID                = threadID.getText().toString();
+                ThreadDetailFragment tdf    = new ThreadDetailFragment();
+
+                Bundle b = new Bundle();
+                b.putString("threadID", strID);
+
+                tdf.setArguments( b );
+
+                ma.openAppFragment( tdf );
             }
         });
 
